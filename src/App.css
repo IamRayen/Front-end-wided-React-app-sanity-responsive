@@ -1,0 +1,14 @@
+.navlink{
+    text-decoration: none;
+    width: 100px;
+    height: 100px;
+    padding-top: 35px;
+    text-align: center;
+    font-size: large;
+    color: grey;
+}
+.navlink:hover{
+    border-top: lightgray 3px solid;
+    color: black;
+    padding-top: 32px;
+}
