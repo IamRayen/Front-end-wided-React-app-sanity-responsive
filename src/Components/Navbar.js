@@ -38,12 +38,13 @@ const Navbar = () => {
                     <i
                         type="button"
                         className="h1 bi bi-list"
+                        style={{fontSize:"40px"}}
                         onClick={handleShow}
                     ></i>
                 </div>
                 <Offcanvas show={show} onHide={handleClose}>
                     <Offcanvas.Header closeButton>
-                        <Offcanvas.Title>Menu</Offcanvas.Title>
+                        <Offcanvas.Title className="fw-bold display-6">Menu</Offcanvas.Title>
                     </Offcanvas.Header>
                     <Offcanvas.Body>
                         <ListGroup className="p-2">

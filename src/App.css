@@ -13,7 +13,8 @@
 }
 .navlink2 {
     text-decoration: none;
-    padding: 6px;
+    min-height: 60px;
+    padding-top: 18px;
     text-align: center;
     font-size: large;
     color: grey;
