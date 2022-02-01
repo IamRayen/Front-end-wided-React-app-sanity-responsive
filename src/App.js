@@ -5,6 +5,7 @@ import "./App.css";
 import Navbar from "./Components/Navbar";
 import Home from "./Views/Home";
 import Footer from "./Components/Footer";
+import Articles from "./Views/Articles";
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
             <Navbar/>
             <Routes>
                 <Route path="/" element={<Home/>}/>
+                <Route path="/articles" element={<Articles/>}/>
             </Routes>
             <Footer/>
             </BrowserRouter>
