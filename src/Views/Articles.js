@@ -20,8 +20,8 @@ const Articles = () => {
 
     useEffect(async () => {
         try {
-            const data =
-                await client.fetch(`*[_type == "post"] | order(publishedAt desc,title) {
+            const data = 
+            await client.fetch(`*[_type == "post"] | order(publishedAt desc,title) {
                 title,
                 introduction,
                 slug,
@@ -38,7 +38,7 @@ const Articles = () => {
         } catch (error) {
             console.log(error);
         }
-    },[])
+    },[articles])
 
     const fixDate = (dateToFix) => {
         const datetime = new Date(dateToFix);
