@@ -1,13 +1,25 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Card, Button } from "react-bootstrap";
 import client from "../client";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
+import imageUrlBuilder from '@sanity/image-url'
+import myConfiguredSanityClient from '../client'
+import SkeletonArticles from "../Skeletons/SkeletonArticles";
+
 
 const Articles = () => {
     const [articles, setArticles] = useState(null);
-    useEffect( async () => {
+    
+    const builder = imageUrlBuilder(myConfiguredSanityClient)
+    
+    const urlFor = (source) =>{
+        return builder.image(source)
+    }
+
+    useEffect(async () => {
         try {
-            const data = await client.fetch(`*[_type == "post"] | order(publishedAt,title) {
+            const data =
+                await client.fetch(`*[_type == "post"] | order(publishedAt desc,title) {
                 title,
                 introduction,
                 slug,
@@ -18,35 +30,57 @@ const Articles = () => {
                     }
                 },
                 publishedAt
-            }`)
-            setArticles(data)
+            }`);
+            setArticles(data);
         } catch (error) {
             console.log(error);
-        } 
-    }, []);
-    console.log(articles);
-    
+        }
+        
+    },[])
+
+    const fixDate = (dateToFix) => {
+        const datetime = new Date(dateToFix);
+        const truedate = datetime.toLocaleString([], {
+            dateStyle: "medium",
+            timeStyle: "short",
+        });
+        return truedate;
+    };
+
     return (
-        <div className="container-xl border d-flex justify-content-evenly flex-wrap">
-                    {articles && articles.map((post) => (
-                        <Link to={"/post/"+post.slug.current} key={post.slug.current} style={{textDecoration:"none"}}>
-            <Card style={{width:"350px"}}>
-                <Card.Img variant="top" src={post.mainImage.asset.url} className="img-fluid" style={{objectFit:"cover",height:"400px",overflow:"hidden"}} />
-                <Card.Body>
-                    <Card.Title>{post.title}</Card.Title>
-                    <Card.Text style={{overflow:"hidden",textOverflow:"ellipsis",maxHeight:"100px",border:"1px solid"}}>
-                        {post.introduction}
-                    </Card.Text>
-                    <Button variant="primary">Go To Article</Button>
-                </Card.Body>
-                <Card.Footer>
-                    <small className="text-muted">
-                        Last updated 3 mins ago
-                    </small>
-                </Card.Footer>
-            </Card>
-            </Link>
-            ))}
+        <div className="container-xl d-flex justify-content-evenly flex-wrap">
+            {articles &&
+                articles.map((post) => (
+                    <Link
+                        to={"/post/" + post.slug.current}
+                        key={post.slug.current}
+                        style={{ textDecoration: "none" }}
+                    >
+                        <Card style={{ width: "350px",marginBottom:"40px" }}>
+                            
+                            <Card.Img
+                                variant="top"
+                                src={urlFor(post.mainImage).height(400).width(350).quality(80).url()}
+                                className="img-fluid"
+                            />
+
+                            <Card.Body>
+                                <Card.Title style={{color:"black"}}>{post.title}</Card.Title>
+                                <Card.Text style={{color:"grey"}}>
+                                    {post.introduction}
+                                </Card.Text>
+                                <Button variant="dark" style={{borderRadius:"0"}}>Go To Article</Button>
+                            </Card.Body>
+
+                            <Card.Footer>
+                                <small className="text-muted">
+                                    {fixDate(post.publishedAt)}
+                                </small>
+                            </Card.Footer>
+                        </Card>
+                    </Link>
+                ))}
+                {!articles && [1,2,3,4,5,6].map(el => <SkeletonArticles/>)}
         </div>
     );
 };
