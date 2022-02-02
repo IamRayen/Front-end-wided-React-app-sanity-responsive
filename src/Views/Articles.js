@@ -18,7 +18,7 @@ const Articles = () => {
         return builder.image(source)
     }
 
-    useEffect(() => {async () => {
+    useEffect(async () => {
         try {
             const data =
                 await client.fetch(`*[_type == "post"] | order(publishedAt desc,title) {
@@ -38,8 +38,6 @@ const Articles = () => {
         } catch (error) {
             console.log(error);
         }
-    }
-        
     },[])
 
     const fixDate = (dateToFix) => {
