@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import imageUrlBuilder from '@sanity/image-url'
 import myConfiguredSanityClient from '../client'
 import SkeletonArticles from "../Skeletons/SkeletonArticles";
+import Aos from "aos"
+import "aos/dist/aos.css"
 
 
 const Articles = () => {
@@ -32,6 +34,7 @@ const Articles = () => {
                 publishedAt
             }`);
             setArticles(data);
+            Aos.init({})
         } catch (error) {
             console.log(error);
         }
@@ -56,7 +59,7 @@ const Articles = () => {
                         key={post.slug.current}
                         style={{ textDecoration: "none" }}
                     >
-                        <Card style={{ width: "350px",marginBottom:"40px" }}>
+                        <Card className="Cards" data-aos="fade-up" style={{ width: "350px",marginBottom:"40px" }}>
                             
                             <Card.Img
                                 variant="top"
