@@ -36,7 +36,7 @@ const Article = () => {
                 }
             };
             Function();
-        }, []);
+        }, [slug]);
     return (
         <div className="container-xl border">
             <div
@@ -45,10 +45,11 @@ const Article = () => {
                 <div className="col-6 border text-center">
                     {article && <img
                         src={urlFor(article.mainImage)
-                            .height(450)
-                            .width(400)
+                            .height(550)
+                            .width(450)
                             .quality(80)
                             .url()}
+                        alt="Main Image"
                     />}
                 </div>
                 <div className="col-6 border">
@@ -57,7 +58,8 @@ const Article = () => {
                 </div>
             </div>
             <div
-                className="container-lg ps-5 pe-5"
+                className="container-xl ps-5 pe-5"
+                style={{maxWidth:"1000px"}}
             >
                 <BlockContent
                  blocks={article && article.body}
