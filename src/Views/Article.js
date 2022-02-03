@@ -49,7 +49,7 @@ const Article = () => {
                             .width(450)
                             .quality(80)
                             .url()}
-                        alt="Main Image"
+                        alt="MainImage"
                     />}
                 </div>
                 <div className="col-6 border">
