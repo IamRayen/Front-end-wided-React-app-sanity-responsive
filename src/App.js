@@ -6,6 +6,7 @@ import Navbar from "./Components/Navbar";
 import Home from "./Views/Home";
 import Footer from "./Components/Footer";
 import Articles from "./Views/Articles";
+import Article from "./Views/Article";
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home/>}/>
                 <Route path="/articles" element={<Articles/>}/>
+                <Route path="/post/:slug" element={<Article/>}/>
             </Routes>
             <Footer/>
             </BrowserRouter>
