@@ -1,10 +1,11 @@
 import React from "react";
 import { Card } from "react-bootstrap";
 import SkeletonElement from "./SkeletonElement";
+import Shimmer from "./Shimmer";
 
 const SkeletonArticles = () => {
     return (
-            <div className="skeleton-article">
+            <div className="skeleton-articles">
                 <Card style={{ width: "350px" }}>
                     <SkeletonElement type="image"/>
                     <Card.Body>
@@ -21,6 +22,7 @@ const SkeletonArticles = () => {
                                 </small>
                     </Card.Footer>
                 </Card>
+                <Shimmer/>
             </div>
     );
 };

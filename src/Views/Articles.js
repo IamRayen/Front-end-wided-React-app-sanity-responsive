@@ -63,7 +63,7 @@ const Articles = () => {
                         <Card
                             className="Cards"
                             data-aos="fade-up"
-                            style={{ width: "350px", marginBottom: "40px" }}
+                            style={{ width: "350px", marginBottom: "40px",border:"white" }}
                         >
                             <Card.Img
                                 variant="top"
