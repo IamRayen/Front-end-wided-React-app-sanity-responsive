@@ -39,7 +39,7 @@ const Articles = () => {
                 console.log(error);
             }
         };
-        Function();
+        Function()
     }, []);
 
     const fixDate = (dateToFix) => {
