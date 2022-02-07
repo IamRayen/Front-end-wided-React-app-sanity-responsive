@@ -29,9 +29,9 @@
     color: black;
     font-size: larger;
 }
+
 .homeimg {
     max-width: 80%;
-    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
 }
 .footer-basic {
     padding: 40px 0;
@@ -106,4 +106,8 @@
 
 .roboto{
     font-family: 'Roboto', sans-serif;
+}
+
+.categorie{
+    background-color:#aaa;
 }
