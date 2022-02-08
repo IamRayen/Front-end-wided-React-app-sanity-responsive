@@ -7,7 +7,6 @@ import client from "../client";
 import { Link } from "react-router-dom";
 import Aos from "aos";
 import "aos/dist/aos.css";
-import SkeletonElement from "../Skeletons/SkeletonElement";
 
 const Paintings = () => {
     const [paintings, setPaintings] = useState(null);
