@@ -7,6 +7,7 @@ import client from "../client";
 import { Link } from "react-router-dom";
 import Aos from "aos";
 import "aos/dist/aos.css";
+import SkeletonElement from "../Skeletons/SkeletonElement";
 
 const Paintings = () => {
     const [paintings, setPaintings] = useState(null);
@@ -68,27 +69,29 @@ const Paintings = () => {
 
     return (
         <div>
-            <div className="container-lg border my-4 categorie d-flex align-items-center">
+            <div className="container-lg my-4 categorie d-flex align-items-center flex-wrap">
                 <h1 className="display-6 me-5">Categories</h1>
-                <div className="d-flex justify-content-center col">
-                    <label className="px-4">
+                <div className="container-lg d-flex justify-content-center col flex-wrap">
+                    <label className="px-4 d-flex align-items-center flex-nowrap">
                         <input
                             onClick={() => Checkbox()}
+                            className="Radio"
                             defaultChecked
                             type="radio"
                             name="123"
                         />
-                        <span>all</span>
+                        <span className="checkmark">all</span>
                     </label>
                     {categories &&
                         categories.map((el) => (
-                            <label className="px-4">
+                            <label className="px-4 d-flex align-items-center">
                                 <input
+                                className="Radio"
                                     onClick={() => Checkbox(el)}
                                     type="radio"
                                     name="123"
                                 />
-                                <span>{el.title}</span>
+                                <span className="checkmark">{el.title}</span>
                             </label>
                         ))}
                 </div>
