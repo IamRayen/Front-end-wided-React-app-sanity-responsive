@@ -5,6 +5,7 @@ import { Card, Button } from "react-bootstrap";
 import SkeletonArticles from "../Skeletons/SkeletonArticles";
 import client from "../client";
 import { Link } from "react-router-dom";
+import Painting from "./Painting";
 import Aos from "aos";
 import "aos/dist/aos.css";
 
@@ -25,6 +26,7 @@ const Paintings = () => {
                     await client.fetch(`*[_type == "painting"] | order(publishedAt desc,title) {
                     title,
                     categories,
+                    introduction,
                     slug,
                     mainImage{
                         asset->{
@@ -65,9 +67,13 @@ const Paintings = () => {
     const Checkbox = (el) => {
         el ? setFilter(el._id) : setFilter("all");
     };
-
+    const [show, setShow] = useState(true);
+    const handleShow = () => {
+        setShow(!show)
+    }
     return (
         <div>
+            <Painting show={show} paintings={paintings}/> 
             <div className="container-lg my-4 categorie d-flex align-items-center flex-wrap">
                 <h1 className="display-6 me-5">Categories</h1>
                 <div className="container-lg d-flex justify-content-center col flex-wrap">
