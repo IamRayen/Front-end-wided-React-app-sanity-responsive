@@ -2,8 +2,10 @@ import React from "react";
 import imageUrlBuilder from "@sanity/image-url";
 import myConfiguredSanityClient from "../client";
 import "./painting.css"
+import { useSwipeable } from 'react-swipeable';
 
 const Painting = ({ setShow, paintings, show, slide,setSlide }) => {
+
     const builder = imageUrlBuilder(myConfiguredSanityClient);
     const urlFor = (source) => {
         return builder.image(source);
@@ -17,14 +19,20 @@ const Painting = ({ setShow, paintings, show, slide,setSlide }) => {
     }
     const handleClose = () => {
         setShow(false)
-        }
+    }
+    const handlers = useSwipeable({
+        onSwipedLeft: NextSlide,
+        onSwipedRight: PrevSlide,
+        preventDefaultTouchmoveEvent: true,
+        trackMouse: true
+    });
     console.log(slide);
     console.log(paintings);
     return (<div>
-        {show ? <div className={`Carousel d-flex justify-content-center align-items-center container-fluid`}>
+        {show ? <div {...handlers} className={`Carousel d-flex justify-content-center align-items-center container-fluid`}>
         <label><i type="button" class="h1 bi bi-x-lg" onClick={handleClose}></i></label>
-        <label><i type="button" className="bi h1 bi-arrow-left-circle-fill" onClick={PrevSlide}></i></label>
-        <label><i type="button" className="bi h1 bi-arrow-right-circle-fill" onClick={NextSlide}></i></label>
+        <label><i type="button" className="bi d-none d-md-block h1 bi-arrow-left-circle-fill" onClick={PrevSlide}></i></label>
+        <label><i type="button" className="bi d-none d-md-block h1 bi-arrow-right-circle-fill" onClick={NextSlide}></i></label>
         {paintings && paintings.map((Slide,index)=>{
             return (
                 <div className={slide === index ? "active-slide container-fluid" : "slide"} key={index}>
