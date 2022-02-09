@@ -36,8 +36,7 @@ const Paintings = () => {
                     },
                     publishedAt
                 }`);
-                const data2 = await client.fetch(`*[_type == "category"]
-                    `);
+                const data2 = await client.fetch(`*[_type == "category"]`);
                 setPaintings(data);
                 setCategories(data2);
                 Aos.init({});
@@ -68,12 +67,14 @@ const Paintings = () => {
         el ? setFilter(el._id) : setFilter("all");
     };
     const [show, setShow] = useState(true);
-    const handleShow = () => {
+    const [slide, setSlide] = useState(0);
+    const handleShow = (index) => {
         setShow(!show)
+        setSlide(index)
     }
     return (
         <div>
-            <Painting show={show} paintings={paintings}/> 
+            <Painting setShow={setShow} show={show} paintings={paintings} slide={slide} setSlide={setSlide}/> 
             <div className="container-lg my-4 categorie d-flex align-items-center flex-wrap">
                 <h1 className="display-6 me-5">Categories</h1>
                 <div className="container-lg d-flex justify-content-center col flex-wrap">
@@ -105,9 +106,10 @@ const Paintings = () => {
                 {paintings &&
                     paintings
                         .filter((el) => Filter(el))
-                        .map((painting) => (
+                        .map((painting,index) => (
                             <Link
-                                to={"/painting/" + painting.slug.current}
+                                to=""
+                                onClick={()=>handleShow(index)}
                                 key={painting.slug.current}
                                 style={{ textDecoration: "none" }}
                             >

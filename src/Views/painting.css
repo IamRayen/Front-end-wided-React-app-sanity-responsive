@@ -1,18 +1,56 @@
 .Carousel {
     position: fixed;
     top:0;
+    overflow-y: auto;
+    overflow-x: hidden;
     z-index: 100;
     height: 100vh;
     width: 100%;
     background-color: rgb(128,128,128,0.8) ;
 }
+
 .bi-arrow-right-circle-fill {
     position: absolute;
     top: 50%;
     right: 1%;
+    z-index: 10;
 }
 .bi-arrow-left-circle-fill {
     position: absolute;
     top: 50%;
     left: 1%;
+    z-index: 10;
+}
+
+.bi-x-lg{
+    position: absolute;
+    top: 3%;
+    right: 3%;
+    z-index: 10;
+}
+
+.bi:hover{
+    color: white;
+}
+
+.image{
+    border-radius: 10px;
+}
+
+.active-slide .text{
+    max-width: 550px;
+    max-height: 600px;
+    overflow-y: auto;
+    overflow-wrap: break-word;
+}
+
+.slide{
+    opacity: 0;
+    transition: 1s ease;
+}
+
+.active-slide{
+    opacity: 1;
+    transition-duration: 1s;
+    transform: scale(1.05);
 }
