@@ -66,7 +66,7 @@ const Paintings = () => {
     const Checkbox = (el) => {
         el ? setFilter(el._id) : setFilter("all");
     };
-    const [show, setShow] = useState(true);
+    const [show, setShow] = useState(false);
     const [slide, setSlide] = useState(0);
     const handleShow = (index) => {
         setShow(!show)
