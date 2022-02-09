@@ -31,8 +31,8 @@ const Painting = ({ setShow, paintings, show, slide,setSlide }) => {
     return (<div>
         {show ? <div {...handlers} className={`Carousel d-flex justify-content-center align-items-center container-fluid`}>
         <label><i type="button" class="h1 bi bi-x-lg" onClick={handleClose}></i></label>
-        <label><i type="button" className="bi d-none d-md-block h1 bi-arrow-left-circle-fill" onClick={PrevSlide}></i></label>
-        <label><i type="button" className="bi d-none d-md-block h1 bi-arrow-right-circle-fill" onClick={NextSlide}></i></label>
+        <label><i type="button" className="bi h1 bi-arrow-left" onClick={PrevSlide}></i></label>
+        <label><i type="button" className="bi h1 bi-arrow-right" onClick={NextSlide}></i></label>
         {paintings && paintings.map((Slide,index)=>{
             return (
                 <div className={slide === index ? "active-slide container-fluid" : "slide"} key={index}>
@@ -42,9 +42,9 @@ const Painting = ({ setShow, paintings, show, slide,setSlide }) => {
                 .quality(80)
                 .url()
                 } alt="img" 
-                className="image img-fluid"
+                className="image img-fluid px-4"
                 />
-                <p className="text align-self-center display-6 p-1">{Slide.introduction}</p>
+                <p className="text align-self-center display-6 p-1 px-4">{Slide.introduction}</p>
                 </div>
                 }
 
