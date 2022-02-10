@@ -109,7 +109,7 @@
 }
 
 .categorie{
-    background-color:#aaa;
+    background-color:rgb(200, 200, 200,0.2);
 }
 
 .Radio{
@@ -121,4 +121,12 @@
     font-size: 18px;
     font-weight: 400;
     font-family: 'Roboto', sans-serif;
+}
+
+.bi{
+    color:grey
+}
+
+.bi:hover{
+    color: black;
 }

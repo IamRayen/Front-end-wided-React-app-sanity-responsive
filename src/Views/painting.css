@@ -41,7 +41,7 @@
     z-index: 10;
 }
 
-.bi:hover{
+.Carousel .bi:hover{
     color: white;
 }
 
